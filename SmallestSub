@@ -1,0 +1,23 @@
+public static int smallestSub (int [] a, int k)
+    {
+        int start = 0, end = 1, sum = a[0], min = Integer.MAX_VALUE, arrayLength = a.length + 1;
+        while (start < a.length)
+        {
+            if (sum > k)
+            {
+                min = Math.min(min,(end - start));
+                sum -= a[start];
+                start++;
+            }
+            if (sum <= k)
+            {
+                if (end < a.length)
+                {
+                    sum += a[end];
+                    end++;
+                }
+                else
+                   start++;
+            }
+        }
+        return Math.min(min, arrayLength);
