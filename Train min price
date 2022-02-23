@@ -1,0 +1,20 @@
+public static void main (String [] args)
+    {
+        int [][] mat = {{0, 15, 80, 90},{-1, 0, 40, 50},{-1, -1, 0, 70},{-1,-1,-1,0}};
+        System.out.println(minPrice(mat, 0, 0, 0)); // Test for method minPrice
+        int [] arr = {2,3,8,14,15,35};
+        int [] arr2 = {2,5,10,11,16,20};
+        int [] arr3 = {1,2,10,15,23,22,30,32,41,50};
+        System.out.println(findAverage(arr, 10)); // Test for method findAverage
+    }
+    public static int minPrice(int[][] mat)
+    {
+        return minPrice(mat, 0, 0, 0);
+    }
+    
+    private static int minPrice(int [][] m, int i, int j, int sum)
+    {
+        if (j == m[0].length - 1)
+            return sum + m[i][j];
+        return Math.min(minPrice(m, i, j + 1, sum), minPrice(m, j, j + 1, sum + m[i][j]));
+    }
