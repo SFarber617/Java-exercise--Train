@@ -1,0 +1,43 @@
+public static boolean findAverage(int [] arr, double x)
+    {
+        int start = 0, end = arr.length - 1;
+        double sum = 0, avg;
+        if (x > arr[arr.length - 1] || x < arr[0])
+            return false;
+        for (int i = 0; i < arr.length; i++)
+        {
+            sum = sum + arr[i];
+        }
+        avg = sum / (end + 1);
+        while (end > 0 && start < arr.length - 1 && start < end)
+        {
+            if (arr[start] == x)
+            {
+                System.out.println(start + "---" + start);
+                return true;
+            }
+            if (arr[end] == x)
+            {
+                System.out.println(end + "---" + end);
+                return true;
+            }
+            if (avg < x)
+            {
+                sum = sum - arr[start];
+                start++;
+                avg = sum / ((end + 1) - start);
+            }
+            if (avg > x)
+            {
+                sum = sum - arr[end];
+                end--;
+                avg = sum / ((end + 1) - start);
+            }
+            if (avg == x)
+            {
+                System.out.println(start + "---" + end);
+                return true;
+            }
+        }
+        return false;
+    }
